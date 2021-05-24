@@ -1,0 +1,8 @@
+README.txt
+setup.py
+MVP.egg-info/PKG-INFO
+MVP.egg-info/SOURCES.txt
+MVP.egg-info/dependency_links.txt
+MVP.egg-info/entry_points.txt
+MVP.egg-info/requires.txt
+MVP.egg-info/top_level.txt

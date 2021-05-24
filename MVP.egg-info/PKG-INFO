@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: MVP
+Version: 1.0
+Summary: Magic Power
+Home-page: https://github.com/Yondex/mvp
+Author: Ran Aroussi
+Author-email: inc238@gmail.com
+License: Apache
+Description: Программа для расчета цен на товары в зависимости от курса вылют
+Keywords: pandas,yahoo finance,pandas datareader
+Platform: any
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
