@@ -74,10 +74,13 @@ def cosinus():
     #for index, row in df[0:10].iterrows():
     #    print( row[['id_vac','cos_similarities', 'descriptions'  ]])
     
-    dictionary, bow_corpus, word_counts, di = corpus(dicts, text)
+    dictionary, bow_corpus, word_counts= corpus(dicts, text)
+   
+    for index, row in df[0:10].iterrows():
+        desc , id_v = texting(row)
+        df.loc[df['id_vac']==str(id_v), 'description'] = desc
 
-
-    return render_template('main.html',   tables=[df[0:10].to_html(classes='data', header="true")], message = [ dictionary, bow_corpus, word_counts, di])
+    return render_template('main.html',   tables=[df[0:10].to_html(classes='data', header="true")], message = [ dictionary, bow_corpus, word_counts])
     #return render_template('index.html',  message =[ dictionary, bow_corpus[:2], word_counts[:2], tables=[df[0:10].to_html(classes='data', header="true")]])
 
 
@@ -99,9 +102,27 @@ def corpus(dicts, text):
        
         d.fromkeys([document_number], score)
 
-    return  dictionary , bow_corpus[:2], word_counts[:2], d
+    return  dictionary , bow_corpus[:2], word_counts[:2]
 
-
+def texting(row):
+    main_list = []
+    k = row[['id_vac']]
+    i =int(k['id_vac'])
+    url = f'https://api.hh.ru/vacancies/{i}'
+    res = requests.get(url)
+    vacancies = res.json()  
+    main_list.append(vacancies)
+    m = main_list[0]['description']
+    text = BeautifulSoup(m, "lxml").text
+    text = re.sub(r'\|\|\|\|\\', r' ', text) 
+    text = re.sub(r'http\S+', r'<URL>', text)
+    text = re.sub(r'\r', r' ', text)
+    text = re.sub(r'\n', r' ', text)
+    text = re.sub(r'\b\w{1,3}\b', '', text) #убирает слова меньше 3 символов
+    text = re.sub(r'\n', r' ', text)
+    main_list.clear()    
+        
+    return [text, i]
 
 
 
